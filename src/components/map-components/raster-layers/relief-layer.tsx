@@ -18,15 +18,13 @@ const ReliefLayer = ({ map }: ReliefLayerProps) => {
                 url: "mapbox://hugones45.7ne6b1su",
                 tileSize: 256,
                 minzoom: 7,
-                maxzoom: 10
+                maxzoom: 10,
             });
 
             map.addLayer({
                 id: "relief-layer",
                 type: "raster",
                 source: "relief-elevation",
-                // minzoom: 7,
-                // maxzoom: 10,
                 paint: {
                     "raster-opacity": opacity,
                 },
@@ -65,6 +63,7 @@ const ReliefLayer = ({ map }: ReliefLayerProps) => {
 
     return (
         <>
+            {/* Opacity Control */}
             <div
                 style={{
                     position: "absolute",
@@ -93,6 +92,38 @@ const ReliefLayer = ({ map }: ReliefLayerProps) => {
                     onChange={handleOpacityChange}
                     style={{ width: "100%" }}
                 />
+            </div>
+
+            {/* Relief Legend */}
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: 20,
+                    left: 20,
+                    zIndex: 10,
+                    backgroundColor: "white",
+                    padding: "10px",
+                    borderRadius: "6px",
+                    boxShadow: "0 0 10px rgba(0,0,0,0.2)",
+                    fontSize: "14px",
+                    width: "220px",
+                    userSelect: "none",
+                }}
+            >
+                <div style={{ marginBottom: "6px", fontWeight: "bold" }}>Elevation (m)</div>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <span style={{ marginRight: 8 }}>0</span>
+                    <div
+                        style={{
+                            flexGrow: 1,
+                            height: "12px",
+                            background:
+                                "linear-gradient(to right, #006400, #00FF00, #FFA500,rgb(159, 99, 9), #FF0000)",
+                            borderRadius: "4px",
+                        }}
+                    />
+                    <span style={{ marginLeft: 8 }}>1345</span>
+                </div>
             </div>
         </>
     );

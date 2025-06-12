@@ -77,23 +77,30 @@ const BaseMap = () => {
         };
     }, [showRelief, showSlope, showHillshade, showContours]);
 
+    // ✅ Fixed toggle logic
     const toggleRelief = () => {
         setShowRelief(prev => {
-            if (!prev) {
+            const newState = !prev;
+            if (newState) {
                 setShowSlope(false);
                 setShowHillshade(false);
+            } else {
+                setShowHillshade(false);
             }
-            return !prev;
+            return newState;
         });
     };
 
     const toggleSlope = () => {
         setShowSlope(prev => {
-            if (!prev) {
+            const newState = !prev;
+            if (newState) {
                 setShowRelief(false);
                 setShowHillshade(false);
+            } else {
+                setShowHillshade(false);
             }
-            return !prev;
+            return newState;
         });
     };
 
