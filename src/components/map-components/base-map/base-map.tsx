@@ -26,7 +26,6 @@ const BaseMap = () => {
         setShowContours(false);
     };
 
-    // Initialize the map
     useEffect(() => {
         if (!mapContainerRef.current) return;
 
@@ -51,14 +50,12 @@ const BaseMap = () => {
         };
     }, []);
 
-    // Update base map style when changed
     useEffect(() => {
         if (mapRef.current && mapLoaded) {
             mapRef.current.setStyle(baseMapStyle);
         }
     }, [baseMapStyle, mapLoaded]);
 
-    // Re-add custom layers after style is reset
     useEffect(() => {
         const map = mapRef.current;
         if (!map) return;
@@ -77,7 +74,6 @@ const BaseMap = () => {
         };
     }, [showRelief, showSlope, showHillshade, showContours]);
 
-    // ✅ Fixed toggle logic
     const toggleRelief = () => {
         setShowRelief(prev => {
             const newState = !prev;
@@ -132,7 +128,6 @@ const BaseMap = () => {
         <>
             <div ref={mapContainerRef} style={{ height: '100vh', width: '100%' }} />
 
-            {/* Raster Layer Buttons - Top Right */}
             <div style={{
                 position: 'absolute',
                 top: 10,
@@ -171,7 +166,6 @@ const BaseMap = () => {
                 </button>
             </div>
 
-            {/* Contour Lines Button - Top Left */}
             <div style={{
                 position: 'absolute',
                 top: 10,

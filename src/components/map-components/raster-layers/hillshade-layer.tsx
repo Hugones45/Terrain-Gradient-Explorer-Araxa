@@ -11,7 +11,7 @@ const HillShadeLayer = ({ map }: HillShadeLayerProps) => {
         if (!map) return;
 
         const addLayers = () => {
-            if (map.getSource("hillshade-source")) return; // Prevent double-adding
+            if (map.getSource("hillshade-source")) return;
 
             // Add hillshade source
             map.addSource("hillshade-source", {

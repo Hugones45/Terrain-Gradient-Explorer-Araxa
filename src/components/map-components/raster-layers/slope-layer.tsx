@@ -11,7 +11,7 @@ const SlopeLayer = ({ map }: SlopeLayerProps) => {
         if (!map) return;
 
         const addLayers = () => {
-            if (map.getSource("slope-elevation")) return; // Prevent double-adding
+            if (map.getSource("slope-elevation")) return;
 
             map.addSource("slope-elevation", {
                 type: "raster",
